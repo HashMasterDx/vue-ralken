@@ -1,9 +1,9 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type NavigationGuardNext, type RouteLocationNormalized } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import axios from 'axios'
 
-const guard = (to, from, next) => {
+const guard = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
   if (localStorage.getItem('token')) {
     axios.post('http://localhost:8000/api/token/verify/', {
       token: localStorage.getItem('token')
