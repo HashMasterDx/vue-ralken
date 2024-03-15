@@ -5,7 +5,8 @@ import axios from 'axios'
 
 const guard = (to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) => {
   if (localStorage.getItem('token')) {
-    axios.post('http://localhost:8000/api/token/verify/', {
+    const urlEnv = import.meta.env.VITE_API_URL;
+    axios.post(`${urlEnv}/token/verify/`, {
       token: localStorage.getItem('token')
     })
       .then(response => {
