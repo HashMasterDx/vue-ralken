@@ -27,7 +27,7 @@ export default {
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" v-if="isLoggedIn()">
                 <li class="nav-item">
                     <a class="nav-link" href="/users">Usuarios</a>
                 </li>
