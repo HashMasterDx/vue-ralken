@@ -28,8 +28,8 @@ export default {
     methods: {
         login(event) {
             event.preventDefault();
-
-            axios.post('http://localhost:8000/api/token/', {
+            const urlEnv = import.meta.env.VITE_API_URL;
+            axios.post(`${urlEnv}/token/`, {
                 username: this.username,
                 password: this.password
             })

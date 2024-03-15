@@ -53,7 +53,8 @@ export default {
     },
     methods: {
         getAlbums() {
-            axios.get(`http://localhost:8000/api/albumes/`, {
+            const urlEnv = import.meta.env.VITE_API_URL;
+            axios.get(`${urlEnv}/albumes/`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }

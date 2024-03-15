@@ -66,7 +66,8 @@ export default {
     },
     methods: {
         getUsers() {
-            axios.get(`http://localhost:8000/api/usuarios/`, {
+            const urlEnv = import.meta.env.VITE_API_URL;
+            axios.get(`${urlEnv}/usuarios/`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }

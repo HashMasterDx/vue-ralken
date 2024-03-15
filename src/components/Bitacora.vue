@@ -46,7 +46,8 @@ export default {
     },
     methods: {
         getLogs() {
-            axios.get(`http://localhost:8000/api/bitacora/`, {
+            const urlEnv = import.meta.env.VITE_API_URL;
+            axios.get(`${urlEnv}/bitacora/`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 }

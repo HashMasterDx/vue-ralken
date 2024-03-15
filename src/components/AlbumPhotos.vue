@@ -33,7 +33,8 @@ export default {
   },
   methods: {
     fetchAlbumPhotos() {
-      axios.get(`http://localhost:8000/api/photos/${this.albumId}/`, {
+      const urlEnv = import.meta.env.VITE_API_URL;
+      axios.get(`${urlEnv}/photos/${this.albumId}/`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }

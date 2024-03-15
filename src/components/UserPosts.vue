@@ -33,7 +33,8 @@ export default {
   },
   methods: {
     fetchUserPosts() {
-      axios.get(`http://localhost:8000/api/posts/${this.userId}/`, {
+      const urlEnv = import.meta.env.VITE_API_URL;
+      axios.get(`${urlEnv}/posts/${this.userId}/`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
