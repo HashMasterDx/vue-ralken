@@ -1,0 +1,67 @@
+<template>
+    <div class="container">
+        <DataTable class="table table-striped table-bordered display" :columns="columns" :data="logs"
+            :options="{ autoWidth: false, }" ref="table" width="100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Host</th>
+                    <th>Solicitud</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+        </DataTable>
+    </div>
+</template>
+
+<script lang="ts">
+import DataTable from "datatables.net-vue3";
+import DataTablesLib from "datatables.net";
+
+import axios from 'axios';
+
+DataTable.use(DataTablesLib);
+
+export default {
+    components: { DataTable },
+    data() {
+        return {
+            logs: null,
+            errors: null as string | null,
+            columns: [
+                { data: 'id' },
+                { data: 'host' },
+                { data: 'solicitud' },
+                { data: 'fecha', render: function (data: any) {
+                    return new Date(data).toLocaleString();
+                }
+            },
+            ]
+        }
+    },
+    mounted() {
+        const table = this.$refs.table;
+        const that = this;
+        this.getLogs();
+    },
+    methods: {
+        getLogs() {
+            axios.get(`http://localhost:8000/api/bitacora/`, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+                .then(response => {
+                    this.logs = response.data;
+                })
+                .catch(error => {
+                    this.errors = 'La api tuvo un error';
+                });
+        }
+    }
+}
+</script>
+
+<style>
+@import "datatables.net-dt";
+</style>
