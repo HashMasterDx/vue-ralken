@@ -5,7 +5,7 @@
           <h1 class="text-center mb-3">Usuarios</h1>
       </div>
       <DataTable class="table table-striped table-bordered display" :columns="columns" :data="users"
-          :options="{ autoWidth: false, }" ref="table" width="100%">
+          :options="{ scrollX:true, autoWidth: false, }" ref="table" width="100%">
           <thead>
               <tr>
                   <th>ID</th>

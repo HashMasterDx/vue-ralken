@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <DataTable class="table table-striped table-bordered display" :columns="columns" :data="albums"
-            :options="{ autoWidth: false, }" ref="table" width="100%">
+            :options="{ scrollX:true, autoWidth: false, }" ref="table" width="100%">
             <thead>
                 <tr>
                     <th>ID</th>
