@@ -7,6 +7,8 @@
                     <th>ID</th>
                     <th>Host</th>
                     <th>Solicitud</th>
+                    <th>País</th>
+                    <th>Bandera</th>
                     <th>Fecha</th>
                 </tr>
             </thead>
@@ -32,10 +34,19 @@ export default {
                 { data: 'id' },
                 { data: 'host' },
                 { data: 'solicitud' },
+                { data: 'country'},
+                { data: 'country_flag', render: function (data: any) {
+                    if (data === null) {
+                        return '';
+                    } else {
+                        return `<img src="${data}" alt="Bandera" width="50" height="50">`;
+                    }
+                }
+                },
                 { data: 'fecha', render: function (data: any) {
                     return new Date(data).toLocaleString();
                 }
-            },
+                },
             ]
         }
     },
