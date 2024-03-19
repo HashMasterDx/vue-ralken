@@ -39,7 +39,7 @@ export default {
                     if (data === null) {
                         return '';
                     } else {
-                        return `<img src="${data}" alt="Bandera" width="50" height="50">`;
+                        return `<img src="${data}" alt="Bandera" width="50">`;
                     }
                 }
                 },
